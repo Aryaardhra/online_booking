@@ -1,6 +1,6 @@
 .header{
    /* background: linear-gradient(90deg, rgba(2,0,36,1) 10%, rgba(183,0,255,1) 30%, rgba(2,0,36,1) 67%);*/
-   background-color: #D8BFD8;
+   background-color: #c6bfd8;
     display: flex;
     color: white;
     justify-content: center;
@@ -45,7 +45,7 @@
 }
 
 .headerBtn{
-    background-color: rgb(232 155 165);
+    background-color: #97a3a9db;
     font-weight: 500;
     border: 1px solid #522b2b;
     border-radius: 20px;
@@ -68,6 +68,7 @@
     max-width: 1024px;
     color: black;
     box-shadow: 0 2px 21px 2px #451d6a;
+    height: 50px;
 }
 
 .headerSearchItem{
