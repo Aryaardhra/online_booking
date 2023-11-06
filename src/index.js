@@ -3,11 +3,13 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
+import "bootstrap/dist/css/bootstrap.min.css";
+//import { SearchContextProvider } from './context/SearchContext';
 
 const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container);
 root.render(
-  
+   
     <BrowserRouter>
        <App />
     </BrowserRouter>
