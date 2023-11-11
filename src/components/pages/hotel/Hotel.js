@@ -6,10 +6,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleArrowLeft, faCircleArrowRight, faCircleXmark, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import MailList from '../../mail/MailList';
 import Footer from '../../footer/Footer';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import useFetch from '../../../hooks/useFetch';
 import LoadingIcon from '../../loadingIcon/LoadingIcon';
 import { SearchContext } from '../../../context/SearchContext';
+import { AuthContext } from '../../../context/AuthContext';
+import Reserve from '../../reserve/Reserve';
 
 const Hotel = () => {
 
@@ -18,19 +20,22 @@ const Hotel = () => {
   const id = location.pathname.split("/")[2];
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
-
+  const [openModel, setOpenModel] = useState(false);
   const { data, loading, error } = useFetch(`find/${id}`);
+  
+  const { user } = useContext(AuthContext); 
+  const navigate = useNavigate();
 
   const { dates, options } = useContext(SearchContext);
  // console.log(dates);
   const millisecondsPerDay = 1000 * 60 * 60 * 24;
-  function dayDifference(date1, date2) {
-    const timeDiff = Math.abs(date2.getTime() - date1.getTime());
+  function dayDifference(date1, date2)  {
+    const timeDiff = Math.abs(Date.parse(date2) - Date.parse(date1));
     const diffDays = Math.ceil(timeDiff / millisecondsPerDay);
     return diffDays;
   } 
 
-  const days = (dayDifference(dates[0].endDate, dates[0].startDate));
+  const days = (dayDifference(dates[0]?.endDate, dates[0]?.startDate));
 
 
   const handleOpen = (i) => {
@@ -49,6 +54,15 @@ const Hotel = () => {
 
     setSlideNumber(newSlideNumber)
   };
+ 
+const handleReserve = () => {
+  if(user){
+    setOpenModel(true);
+  }else{
+    navigate("/login")
+  }
+};
+
   return (
     <>
     <Navbar />
@@ -120,7 +134,7 @@ const Hotel = () => {
             <h2>
               <b>$ { days * data.cheapestPrice * options.room}</b> ({days} nights)
             </h2>
-            <button>Reserve or Book Now!</button>
+            <button onClick={handleReserve}>Reserve or Book Now!</button>
           </div>
         </div>
       </div>
@@ -128,7 +142,8 @@ const Hotel = () => {
      <Footer />
     </div>
      )}
-
+     
+      { openModel && <Reserve setOpen={setOpenModel} hotelId={id} /> }
     </>
   )
 }
