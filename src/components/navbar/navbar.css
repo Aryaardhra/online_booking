@@ -16,6 +16,7 @@
 }
 
 .logo{
+    margin-left: 36px;
     font-weight: 800;
     font-family: serif;
     color: #fff;
@@ -27,4 +28,24 @@
     padding: 5px 10px;
     cursor: pointer;
     color: rgb(55, 49, 49);
+}
+
+.logout{
+   
+    font-weight: 800;
+    font-family: serif;
+    color: #fff;
+    text-decoration: none;
+    margin-inline-end: -169px;
+}
+
+.log{
+    margin-left: 36px;
+    font-weight: 800;
+    font-family: serif;
+    color: #fff;
+}
+
+.navItems{
+    margin-right: 54px;
 }
