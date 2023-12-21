@@ -5,8 +5,6 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { DarkModeContextProvider } from './context/DarkModeContext';
-//import { DarkModeContextProvider } from "./context/DarkModeContextProvider";
-//import { SearchContextProvider } from './context/SearchContext';
 
 const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container);

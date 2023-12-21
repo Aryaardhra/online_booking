@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "../register/register.css";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { axiosInstance } from "../../../config";
 
 const Register = () => {
 
@@ -9,6 +9,9 @@ const Register = () => {
     username: undefined,
     email: undefined,
     password: undefined,
+    city: undefined,
+    country: undefined,
+    phone: undefined,
   });
   const [error, setError] = useState("");
   const navigate = useNavigate();
@@ -17,9 +20,9 @@ const Register = () => {
   };
   const handleClick = async (e) => {
     e.preventDefault();
-    if (credentials.username && credentials.email && credentials.password) {
+    if (credentials.username && credentials.email && credentials.password && credentials.city && credentials.country && credentials.phone) {
       try {
-        const res = await axios.post("/auth/register", credentials);
+        const res = await axiosInstance.post("/auth/register", credentials);
         navigate("/login");
       } catch (error) {
         setError("username or email already exist");
@@ -49,6 +52,27 @@ const Register = () => {
           type="password"
           placeholder="password"
           id="password"
+          onChange={handleChange}
+          className="reinput"
+        />
+         <input
+          type="text"
+          placeholder="city"
+          id="city"
+          onChange={handleChange}
+          className="reinput"
+        />
+         <input
+          type="text"
+          placeholder="country"
+          id="country"
+          onChange={handleChange}
+          className="reinput"
+        />
+         <input
+          type="text"
+          placeholder="phone number"
+          id="phone"
           onChange={handleChange}
           className="reinput"
         />
