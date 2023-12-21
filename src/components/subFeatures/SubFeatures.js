@@ -4,7 +4,8 @@ import "./subFeatures.css";
 
 const SubFeatures = () => {
 
-  const { data, loading, error } =useFetch("/hotels?featured=true&limit=2")
+  const { data, loading, error } =useFetch("/hotels?featured=true&limit=4")
+  //console.log(data)
   return (
     <>
      <div className="fp">

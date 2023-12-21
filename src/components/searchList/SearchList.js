@@ -6,7 +6,7 @@ const SearchList = ({item}) => {
     <>
      <div className="searchItem">
       <img
-        src=""
+        src={item.photos[0]}
         alt={item.name}
         className="siImg"
       />
